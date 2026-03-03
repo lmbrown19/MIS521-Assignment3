@@ -1,0 +1,17 @@
+/* Scoped layout overrides - main theme in wwwroot/css/site.css */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Let site.css handle colors; keep structure only */
+.border-top { border-top: 1px solid transparent; }
+.border-bottom { border-bottom: 1px solid transparent; }
+.box-shadow { box-shadow: none; }
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}

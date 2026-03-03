@@ -20,3 +20,6 @@ appsettings.Development.json
 hf_api_key.txt
 Assignment 3/hf_api_key.txt
 
+### Connection string
+appsettings.development.json
+

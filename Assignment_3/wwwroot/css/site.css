@@ -1,0 +1,414 @@
+/* ============================================
+   MY FILMS - Sci-Fi Theme (jQuery UI + custom)
+   Dark background, red text, user-friendly UI
+   ============================================ */
+
+:root {
+  --sci-fi-bg: #0a0a0f;
+  --sci-fi-bg-elevated: #12121a;
+  --sci-fi-bg-card: #16161f;
+  --sci-fi-red: #e63946;
+  --sci-fi-red-dim: #b82a36;
+  --sci-fi-red-bright: #ff4d5a;
+  --sci-fi-red-glow: rgba(230, 57, 70, 0.4);
+  --sci-fi-border: #2a1a1a;
+  --sci-fi-text: #e63946;
+  --sci-fi-text-muted: #a03038;
+  --sci-fi-input-bg: #0d0d12;
+  --sci-fi-font-heading: 'Orbitron', sans-serif;
+  --sci-fi-font-body: 'Rajdhani', sans-serif;
+}
+
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ---- Body & main content ---- */
+body.site-body {
+  margin-bottom: 70px;
+  background: var(--sci-fi-bg);
+  color: var(--sci-fi-text);
+  font-family: var(--sci-fi-font-body);
+  font-weight: 500;
+  min-height: 100vh;
+}
+
+.site-main-container {
+  max-width: 1200px;
+}
+
+.site-main {
+  padding-top: 1.5rem;
+}
+
+/* ---- Headings ---- */
+h1, h2, h3, h4, h5, h6,
+.site-main .display-4,
+.site-main .display-5,
+.site-main .display-6 {
+  font-family: var(--sci-fi-font-heading);
+  color: var(--sci-fi-red);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px var(--sci-fi-red-glow);
+}
+
+.site-main h1 { font-size: 1.85rem; margin-bottom: 1rem; }
+.site-main h3 { font-size: 1.25rem; }
+.site-main h4 { font-size: 1.1rem; color: var(--sci-fi-red-dim); }
+
+.site-main .display-4 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Header / Nav (jQuery UI themed) ---- */
+.site-header {
+  border-bottom: 1px solid var(--sci-fi-border);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.site-nav {
+  background: var(--sci-fi-bg-elevated) !important;
+  border: none;
+  border-radius: 0;
+}
+
+.site-brand {
+  font-family: var(--sci-fi-font-heading);
+  font-weight: 700;
+  color: var(--sci-fi-red) !important;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 15px var(--sci-fi-red-glow);
+}
+
+.site-nav-link {
+  color: var(--sci-fi-text-muted) !important;
+  font-family: var(--sci-fi-font-body);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.site-nav-link:hover,
+.site-nav-link:focus {
+  color: var(--sci-fi-red-bright) !important;
+  background: rgba(230, 57, 70, 0.1) !important;
+  text-shadow: 0 0 10px var(--sci-fi-red-glow);
+}
+
+.navbar-toggler {
+  border-color: var(--sci-fi-border) !important;
+  color: var(--sci-fi-red) !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(0.4) sepia(1) saturate(5) hue-rotate(340deg);
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 60px;
+  white-space: nowrap;
+  background: var(--sci-fi-bg-elevated) !important;
+  border-top: 1px solid var(--sci-fi-border) !important;
+  color: var(--sci-fi-text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-text {
+  margin-right: 0.5rem;
+}
+
+.footer-link {
+  color: var(--sci-fi-red-dim);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: var(--sci-fi-red);
+  text-decoration: underline;
+}
+
+.footer-sep {
+  color: var(--sci-fi-text-muted);
+  margin: 0 0.25rem;
+}
+
+/* ---- Links ---- */
+.site-main a:not(.btn):not(.nav-link):not(.footer-link) {
+  color: var(--sci-fi-red-dim);
+  text-decoration: none;
+}
+
+.site-main a:not(.btn):not(.nav-link):not(.footer-link):hover {
+  color: var(--sci-fi-red-bright);
+  text-decoration: underline;
+  text-shadow: 0 0 8px var(--sci-fi-red-glow);
+}
+
+/* ---- Paragraphs & text ---- */
+.site-main p {
+  color: var(--sci-fi-text);
+  line-height: 1.6;
+}
+
+.site-main .text-muted {
+  color: var(--sci-fi-text-muted) !important;
+}
+
+.site-main strong {
+  color: var(--sci-fi-red);
+  font-weight: 600;
+}
+
+.site-main .text-center {
+  color: var(--sci-fi-text);
+}
+
+.site-main .lead {
+  font-size: 1.15rem;
+  color: var(--sci-fi-text-muted);
+  max-width: 42em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Select dropdowns */
+.site-main select.form-control,
+.site-main select {
+  background: var(--sci-fi-input-bg) !important;
+  border: 1px solid var(--sci-fi-border) !important;
+  color: var(--sci-fi-text) !important;
+  font-family: var(--sci-fi-font-body) !important;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+}
+
+/* ---- Buttons (jQuery UI + overrides) ---- */
+.site-main .btn,
+.ui-button,
+button.ui-button {
+  font-family: var(--sci-fi-font-body) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.site-main .btn-primary,
+.ui-button.ui-state-default {
+  background: var(--sci-fi-bg-card) !important;
+  border: 1px solid var(--sci-fi-red) !important;
+  color: var(--sci-fi-red) !important;
+}
+
+.site-main .btn-primary:hover,
+.ui-button:hover,
+.ui-state-hover {
+  background: rgba(230, 57, 70, 0.2) !important;
+  border-color: var(--sci-fi-red-bright) !important;
+  color: var(--sci-fi-red-bright) !important;
+  box-shadow: 0 0 15px var(--sci-fi-red-glow);
+}
+
+.site-main .btn-danger {
+  background: var(--sci-fi-bg-card) !important;
+  border: 1px solid var(--sci-fi-red) !important;
+  color: var(--sci-fi-red) !important;
+}
+
+.site-main .btn-danger:hover {
+  background: rgba(230, 57, 70, 0.3) !important;
+  border-color: var(--sci-fi-red-bright) !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px var(--sci-fi-red-glow);
+}
+
+.site-main .btn-secondary,
+.site-main .btn-outline-secondary {
+  border-color: var(--sci-fi-border);
+  color: var(--sci-fi-text-muted);
+}
+
+.site-main .btn-secondary:hover {
+  border-color: var(--sci-fi-red);
+  color: var(--sci-fi-red);
+}
+
+/* ---- Forms (jQuery UI inputs) ---- */
+.site-main .form-control,
+.site-main input[type="text"],
+.site-main input[type="url"],
+.site-main input[type="number"],
+.site-main input[type="date"],
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea {
+  background: var(--sci-fi-input-bg) !important;
+  border: 1px solid var(--sci-fi-border) !important;
+  color: var(--sci-fi-text) !important;
+  font-family: var(--sci-fi-font-body) !important;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+}
+
+.site-main .form-control:focus,
+.site-main input:focus,
+.ui-widget input:focus {
+  border-color: var(--sci-fi-red) !important;
+  box-shadow: 0 0 0 0.2rem var(--sci-fi-red-glow) !important;
+  outline: none;
+}
+
+.site-main label.control-label,
+.site-main .form-group label {
+  color: var(--sci-fi-red-dim);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.site-main .text-danger {
+  color: var(--sci-fi-red-bright) !important;
+  font-size: 0.9rem;
+}
+
+/* ---- Tables ---- */
+.site-main .table {
+  color: var(--sci-fi-text);
+  border-color: var(--sci-fi-border);
+  font-family: var(--sci-fi-font-body);
+}
+
+.site-main .table thead th {
+  background: var(--sci-fi-bg-card) !important;
+  color: var(--sci-fi-red) !important;
+  border-color: var(--sci-fi-border) !important;
+  font-family: var(--sci-fi-font-heading);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 0.75rem;
+}
+
+.site-main .table tbody tr {
+  background: var(--sci-fi-bg-elevated);
+}
+
+.site-main .table tbody tr:nth-of-type(even) {
+  background: rgba(22, 22, 31, 0.6);
+}
+
+.site-main .table tbody tr:hover {
+  background: rgba(230, 57, 70, 0.08);
+}
+
+.site-main .table td {
+  border-color: var(--sci-fi-border) !important;
+  padding: 0.75rem;
+  vertical-align: middle;
+}
+
+.site-main .table a {
+  margin: 0 4px;
+}
+
+/* ---- Definition lists (Details / Delete) ---- */
+.site-main dl.row dt {
+  color: var(--sci-fi-red-dim);
+  font-weight: 600;
+}
+
+.site-main dl.row dd {
+  color: var(--sci-fi-text);
+}
+
+.site-main hr {
+  border-color: var(--sci-fi-border);
+  opacity: 0.8;
+}
+
+/* ---- Cards / Panels (jQuery UI widget) ---- */
+.ui-widget-content {
+  background: var(--sci-fi-bg-card) !important;
+  border-color: var(--sci-fi-border) !important;
+  color: var(--sci-fi-text) !important;
+}
+
+.ui-widget-header {
+  background: var(--sci-fi-bg-elevated) !important;
+  border-color: var(--sci-fi-border) !important;
+  color: var(--sci-fi-red) !important;
+}
+
+/* ---- Images ---- */
+.site-main .img-thumbnail {
+  border-color: var(--sci-fi-border);
+  background: var(--sci-fi-bg-card);
+  border-radius: 4px;
+}
+
+/* ---- Utility ---- */
+.btn:focus,
+.btn:active:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem var(--sci-fi-red-glow);
+}
+
+/* Page title area */
+.site-main .page-actions {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-main .page-actions .btn,
+.site-main .page-actions .ui-button {
+  margin-right: 0.25rem;
+}
+
+/* Back to list / action links block */
+.site-main .back-links {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sci-fi-border);
+}
+
+/* Validation summary */
+.site-main .validation-summary-errors {
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid var(--sci-fi-red-dim);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  color: var(--sci-fi-red-bright);
+}
+
+/* Code / request ID (Error page) */
+.site-main code {
+  background: var(--sci-fi-bg-card);
+  color: var(--sci-fi-red-dim);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--sci-fi-border);
+}
+
+/* Error page */
+.site-main .text-danger {
+  color: var(--sci-fi-red-bright) !important;
+}

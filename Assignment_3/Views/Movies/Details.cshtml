@@ -1,0 +1,97 @@
+@model Assignment_3.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Movie Details</h1>
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IMDBlink)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IMDBlink)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.genre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.releaseDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.releaseDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mediaLink)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mediaLink)
+        </dd>
+    </dl>
+
+    @{
+        var comments = ViewBag.RedditComments as IEnumerable<string>;
+        var scores = ViewBag.SentimentScores as IEnumerable<double>;
+        var averageScore = ViewBag.AverageSentimentScore as string;
+    }
+
+    <div class="mt-4">
+        <h4>Sentiment Analysis</h4>
+        <p>
+            <strong>Average Sentiment Score:</strong>
+            @if (!string.IsNullOrWhiteSpace(averageScore))
+            {
+                @averageScore
+            }
+            else
+            {
+                @:N/A
+            }
+        </p>
+
+        @if (comments != null && scores != null)
+        {
+            var commentsList = comments.ToList();
+            var scoresList = scores is List<double> sl ? sl : scores.ToList();
+            <table class="table table-bordered table-striped ui-widget-content">
+                <thead>
+                    <tr>
+                        <th style="width:70%;">Reddit Comment (Top 25)</th>
+                        <th style="width:30%;">Sentiment Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @for (var i = 0; i < commentsList.Count && i < 25; i++)
+                {
+                    var comment = commentsList[i];
+                    var score = i < scoresList.Count ? scoresList[i] : 0.0;
+                    <tr>
+                        <td>@comment</td>
+                        <td>@score</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="text-muted">Sentiment analysis data is not available for this movie.</p>
+        }
+    </div>
+</div>
+<div class="back-links">
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

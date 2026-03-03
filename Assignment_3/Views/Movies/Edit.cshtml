@@ -1,0 +1,52 @@
+@model Assignment_3.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Movie</h1>
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Edit" class="ui-widget">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IMDBlink" class="control-label"></label>
+                <input asp-for="IMDBlink" class="form-control" />
+                <span asp-validation-for="IMDBlink" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="genre" class="control-label"></label>
+                <input asp-for="genre" class="form-control" />
+                <span asp-validation-for="genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="releaseDate" class="control-label"></label>
+                <input asp-for="releaseDate" class="form-control" />
+                <span asp-validation-for="releaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mediaLink" class="control-label"></label>
+                <input asp-for="mediaLink" class="form-control" />
+                <span asp-validation-for="mediaLink" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Save" class="btn btn-primary ui-button" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="back-links">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
