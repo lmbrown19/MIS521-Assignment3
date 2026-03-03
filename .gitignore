@@ -1,0 +1,21 @@
+### Build outputs
+bin/
+obj/
+
+### VS / Rider / IDE
+.vs/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+### Logs
+*.log
+
+### ASP.NET Core
+appsettings.Development.json
+
+### Local API key files (not committed)
+Assignment 3/hf_api_key.txt
+
