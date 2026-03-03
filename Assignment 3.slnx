@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 <Solution>
-  <Project Path="Assignment 3/Assignment 3.csproj" />
+  <Project Path="Assignment3Database/Assignment3Database.csproj" />
 </Solution>
-=======
-<Solution>
-  <Project Path="Assignment 3/Assignment 3.csproj" />
-</Solution>
->>>>>>> a9a461131df701276d77ccfe635f14bbe5275ffb

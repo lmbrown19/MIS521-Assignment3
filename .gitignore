@@ -17,5 +17,6 @@ obj/
 appsettings.Development.json
 
 ### Local API key files (not committed)
+hf_api_key.txt
 Assignment 3/hf_api_key.txt
 

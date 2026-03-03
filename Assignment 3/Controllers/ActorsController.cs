@@ -153,7 +153,7 @@ namespace Assignment_3.Controllers
             }
 
             //NOTE: Your app is NOT a console app, so the next line of code has some good pieces, but it cannot be used as-is.
-
+            var avgscore = "Avg Score: " + Math.Round((totalScore / validResponses), 2).ToString();
             Console.WriteLine("Avg Score: " + Math.Round((totalScore / validResponses), 2).ToString());
 
         }
