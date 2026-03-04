@@ -75,9 +75,10 @@ namespace Assignment_3.Controllers
             var apiKeyPath = Path.Combine(Directory.GetCurrentDirectory(), "hf_api_key.txt");
             var apiKey = System.IO.File.Exists(apiKeyPath)
                 ? System.IO.File.ReadAllText(apiKeyPath).Trim()
-                : null;
+                : Environment.GetEnvironmentVariable("HF_API_KEY");
 
             List<string> textToExamine = await SearchRedditAsync(title);
+
             double totalScore = 0;
             int validResponses = 0;
 
@@ -99,16 +100,27 @@ namespace Assignment_3.Controllers
 
                 try
                 {
-                    var sentimentResults = JsonSerializer.Deserialize<List<List<SentimentResponse>>>(responseString);
+                    List<SentimentResponse>? firstLevel = null;
 
-                    if (sentimentResults != null && sentimentResults.Count > 0)
+                    var nested = JsonSerializer.Deserialize<List<List<SentimentResponse>>>(responseString);
+                    if (nested != null && nested.Count > 0)
                     {
-                        var sentimentResult = sentimentResults[0][0];
+                        firstLevel = nested[0];
+                    }
+
+                    if (firstLevel == null)
+                    {
+                        firstLevel = JsonSerializer.Deserialize<List<SentimentResponse>>(responseString);
+                    }
+
+                    if (firstLevel != null && firstLevel.Count > 0)
+                    {
+                        var sentimentResult = firstLevel[0];
                         var confidence = (double)sentimentResult.Score;
 
                         if (sentimentResult.Label == "NEGATIVE")
                         {
-                            confidence = confidence * -1;
+                            confidence *= -1;
                         }
 
                         result.Comments.Add(post);
@@ -119,13 +131,25 @@ namespace Assignment_3.Controllers
                 }
                 catch
                 {
-                    // skip failed responses
+                    // Skip failed responses
                 }
             }
 
-            result.AverageScore = validResponses > 0
-                ? "Avg Score: " + Math.Round(totalScore / validResponses, 2).ToString()
-                : "N/A (no valid responses)";
+            if (validResponses > 0)
+            {
+                var avgDouble = Math.Round(totalScore / validResponses, 2);
+                var sentimentLabel = avgDouble > 0
+                    ? "Positive"
+                    : avgDouble < 0
+                        ? "Negative"
+                        : "Neutral";
+
+                result.AverageScore = $"{sentimentLabel}: {avgDouble.ToString("0.00")}";
+            }
+            else
+            {
+                result.AverageScore = "N/A (no valid responses)";
+            }
 
             return result;
         }

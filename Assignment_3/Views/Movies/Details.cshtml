@@ -47,9 +47,9 @@
         var averageScore = ViewBag.AverageSentimentScore as string;
     }
 
-    <div class="mt-4">
+    <div class="mt-4 sentiment-section">
         <h4>Sentiment Analysis</h4>
-        <p>
+        <p class="sentiment-average-text">
             <strong>Average Sentiment Score:</strong>
             @if (!string.IsNullOrWhiteSpace(averageScore))
             {
@@ -65,7 +65,7 @@
         {
             var commentsList = comments.ToList();
             var scoresList = scores is List<double> sl ? sl : scores.ToList();
-            <table class="table table-bordered table-striped ui-widget-content">
+            <table class="table table-bordered table-striped ui-widget-content sentiment-table">
                 <thead>
                     <tr>
                         <th style="width:70%;">Reddit Comment (Top 25)</th>
@@ -77,9 +77,14 @@
                 {
                     var comment = commentsList[i];
                     var score = i < scoresList.Count ? scoresList[i] : 0.0;
+                    var sentimentLabel = score > 0
+                        ? "Positive"
+                        : score < 0
+                            ? "Negative"
+                            : "Neutral";
                     <tr>
                         <td>@comment</td>
-                        <td>@score</td>
+                        <td>@sentimentLabel: @score.ToString("0.00")</td>
                     </tr>
                 }
                 </tbody>

@@ -41,6 +41,12 @@ body.site-body {
   min-height: 100vh;
 }
 
+/* Force all text in main content to be red for readability */
+.site-main,
+.site-main * {
+  color: var(--sci-fi-text) !important;
+}
+
 .site-main-container {
   max-width: 1200px;
 }
@@ -179,11 +185,34 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .site-main .lead {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   color: var(--sci-fi-text-muted);
   max-width: 42em;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Home page hero section */
+.home-hero .display-4 {
+  font-size: 2.6rem;
+}
+
+.home-hero .lead {
+  font-size: 1.5rem;
+}
+
+/* Sentiment analysis typography */
+.sentiment-section h4 {
+  font-size: 1.4rem;
+}
+
+.sentiment-average-text {
+  font-size: 1.25rem;
+}
+
+.sentiment-table td,
+.sentiment-table th {
+  font-size: 1.05rem;
 }
 
 /* Select dropdowns */
